@@ -51,4 +51,11 @@ class TreeTest < Minitest::Test
   def test_it_can_find_the_minimum_scoring_node
     assert_equal(@tree.min, {"Johnny English"=>16})
   end
+
+  def test_it_can_sort_nodes_by_score
+    assert_equal(@tree.sort, [{"Johnny English"=>16},
+                              {"Hannibal Buress: Animal Furnace"=>50},
+                              {"Bill & Ted's Excellent Adventure"=>61},
+                              {"Sharknado 3"=>92}])
+  end
 end
