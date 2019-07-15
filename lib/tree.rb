@@ -31,4 +31,15 @@ class Tree
       end
     end
   end
+
+  def include?(score)
+    found = false
+    current_node = @root
+    while !found
+      current_node = current_node.left_node if score < current_node.score
+      current_node = current_node.right_node if score > current_node.score
+      return true if current_node.score == score
+      return false if current_node.leaf?
+    end
+  end
 end
