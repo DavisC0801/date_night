@@ -27,4 +27,13 @@ class TreeTest < Minitest::Test
     assert_equal depth_3, 1
     assert_equal depth_4, 2
   end
+
+  def test_it_can_find_included_values
+    @tree.insert(61, "Bill & Ted's Excellent Adventure")
+    @tree.insert(16, "Johnny English")
+    @tree.insert(92, "Sharknado 3")
+    @tree.insert(50, "Hannibal Buress: Animal Furnace")
+    assert @tree.include?(61)
+    refute @tree.include?(72)
+  end
 end
