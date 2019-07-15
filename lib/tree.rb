@@ -33,6 +33,7 @@ class Tree
   end
 
   def include?(score)
+    return nil if @root.nil?
     current_node = @root
     loop do
       current_node = current_node.left_node if score < current_node.score
@@ -43,6 +44,7 @@ class Tree
   end
 
   def depth_of(score)
+    return nil if @root.nil?
     current_node = @root
     depth = 0
     loop do
@@ -55,6 +57,24 @@ class Tree
       end
       return depth if current_node.score == score
       return nil if current_node.leaf?
+    end
+  end
+
+  def min
+    return nil if @root.nil?
+    current_node = @root
+    loop do
+      current_node = current_node.left_node if !current_node.left_node.nil?
+      return {current_node.title => current_node.score} if current_node.left_node.nil?
+    end
+  end
+
+  def max
+    return nil if @root.nil?
+    current_node = @root
+    loop do
+      current_node = current_node.right_node if !current_node.right_node.nil?
+      return {current_node.title => current_node.score} if current_node.right_node.nil?
     end
   end
 end
