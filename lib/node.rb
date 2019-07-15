@@ -10,4 +10,8 @@ class Node
     @left_node = nil
     @right_node = nil
   end
+
+  def leaf?
+    @right_node == nil && @left_node == nil
+  end
 end
