@@ -43,4 +43,12 @@ class TreeTest < Minitest::Test
     assert_equal(@tree.depth_of(50), 2)
     assert_nil @tree.depth_of(123)
   end
+
+  def test_it_can_find_the_maximum_scoring_node
+    assert_equal(@tree.max, {"Sharknado 3"=>92})
+  end
+
+  def test_it_can_find_the_minimum_scoring_node
+    assert_equal(@tree.min, {"Johnny English"=>16})
+  end
 end
