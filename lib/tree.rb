@@ -33,13 +33,28 @@ class Tree
   end
 
   def include?(score)
-    found = false
     current_node = @root
-    while !found
+    loop do
       current_node = current_node.left_node if score < current_node.score
       current_node = current_node.right_node if score > current_node.score
       return true if current_node.score == score
       return false if current_node.leaf?
+    end
+  end
+
+  def depth_of(score)
+    current_node = @root
+    depth = 0
+    loop do
+      if score < current_node.score
+        current_node = current_node.left_node
+        depth += 1
+      elsif score > current_node.score
+        current_node = current_node.right_node
+        depth += 1
+      end
+      return depth if current_node.score == score
+      return nil if current_node.leaf?
     end
   end
 end
